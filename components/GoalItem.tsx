@@ -3,17 +3,12 @@ import { View, Text, StyleSheet, Pressable } from 'react-native';
 interface GoalItemProps {
 	text: string;
     id: string;
-    onDeleteGoal: (goalId: string) => void;
+    onDeleteGoal: (id: string) => void;
 }
 
 const GoalItem = (props: GoalItemProps) => {
-
-    const onDeleteGoal = () => {
-        props.onDeleteGoal(props.id);
-    }
-
 	return (
-		<Pressable onPress={onDeleteGoal}>
+		<Pressable onPress={props.onDeleteGoal.bind(this, props.id)}>
             <View style={styles.goalItem}>
                 <Text style={styles.goalText}>{props.text}</Text>
             </View>
